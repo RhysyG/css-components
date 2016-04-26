@@ -1,0 +1,111 @@
+/*------------------------------------*\
+	#LAYOUT
+\*------------------------------------*/
+
+/**
+ * A flexible abstraction Grids and Rows in Flexbox
+ */
+
+$layout-gutter:           $base-spacing-unit !default;
+$layout-gutter--tiny:       quarter($layout-gutter) !default;
+$layout-gutter--small:        halve($layout-gutter) !default;
+$layout-gutter--large:       double($layout-gutter) !default;
+$layout-gutter--huge:     quadruple($layout-gutter) !default;
+
+/**
+ * Begin a layout group.
+ */
+.#{$objects-namespace}layout,
+%#{$objects-namespace}layout {
+	list-style: none;
+	margin:  0;
+	margin-left: -$layout-gutter;
+	padding: 0;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.#{$objects-namespace}layout__item,
+%#{$objects-namespace}layout__item {
+	padding-left: $layout-gutter;
+}
+
+/**
+ * Item modifiers
+ */
+.#{$objects-namespace}layout__item--full,
+%#{$objects-namespace}layout__item--full {
+	flex: 1;
+}
+
+.#{$objects-namespace}layout__item--right,
+%#{$objects-namespace}layout__item--right {
+	margin-left:auto; // Note: All succeeding items will follow
+}
+
+/**
+ * Space modifiers.
+ */
+.#{$objects-namespace}layout--small,
+%#{$objects-namespace}layout--small {
+
+	margin-left: $layout-gutter--small;
+
+	> .#{$objects-namespace}layout__item,
+	> %#{$objects-namespace}layout__item {
+			padding-left: $layout-gutter--small;
+	}
+}
+
+.#{$objects-namespace}layout--large,
+%#{$objects-namespace}layout--large {
+	margin-left: $layout-gutter--large;
+
+	> .#{$objects-namespace}layout__item,
+	> %#{$objects-namespace}layout__item {
+			padding-left: $layout-gutter--large;
+	}
+}
+
+.#{$objects-namespace}layout--flush,
+%#{$objects-namespace}layout--flush {
+	margin-left: 0;
+
+	> .#{$objects-namespace}layout__item,
+	> %#{$objects-namespace}layout__item {
+			padding-left: 0;
+	}
+}
+
+/**
+ * Alignemnt modifiers.
+ */
+.#{$objects-namespace}layout--middle,
+%#{$objects-namespace}layout--middle {
+	align-items: center;
+}
+
+.#{$objects-namespace}layout--bottom,
+%#{$objects-namespace}layout--bottom {
+	align-items: flex-end;
+}
+
+.#{$objects-namespace}layout--center,
+%#{$objects-namespace}layout--center {
+	justify-content: center;
+}
+
+.#{$objects-namespace}layout--right,
+%#{$objects-namespace}layout--right {
+	justify-content: flex-end;
+}
+
+.#{$objects-namespace}layout--left,
+%#{$objects-namespace}layout--left {
+	justify-content: flex-start;
+}
+
+.#{$objects-namespace}layout--fit,
+%#{$objects-namespace}layout--fit {
+	justify-content:space-between;
+}
